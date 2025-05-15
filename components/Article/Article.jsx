@@ -1,6 +1,9 @@
+import { useState } from "react";
 import styles from "./styles.module.css";
 
 const Article = ({ imgUrl, title }) => {
+  const [isShow, setShow] = useState(false);
+
   return (
     <div
       className={styles.wrapper}
@@ -8,8 +11,16 @@ const Article = ({ imgUrl, title }) => {
         console.log(title);
       }}
     >
-      <img src={imgUrl} />
+      {isShow && <img src={imgUrl} />}
       <h3>{title}</h3>
+
+      <button
+        onClick={() => {
+          setShow(!isShow);
+        }}
+      >
+        {isShow ? <>Hide photo</> : <>Show photo</>}
+      </button>
     </div>
   );
 };
