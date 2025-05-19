@@ -15,9 +15,7 @@ const Main = () => {
     setCandies(response.data);
   };
 
-  useEffect(async () => {
-    await axios.get("https://680726a0e81df7060eb8fba8.mockapi.io/candies");
-
+  useEffect(() => {
     fetchCandies();
   }, []);
 
