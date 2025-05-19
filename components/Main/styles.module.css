@@ -1,9 +1,10 @@
 .wrapper {
   background-color: rgb(139, 127, 57);
-  height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
