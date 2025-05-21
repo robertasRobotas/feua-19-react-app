@@ -1,23 +1,18 @@
 import styles from "./styles.module.css";
 
-const Header = ({ logo }) => {
+const Header = ({ logo, links }) => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>{logo}</div>
       <nav>
         <ul>
-          <li>
-            <a href="#">aaaaaa</a>
-          </li>
-          <li>
-            <a href="#">aaaaaa</a>
-          </li>
-          <li>
-            <a href="#">aaaaaa</a>
-          </li>
-          <li>
-            <a href="#">aaaaaa</a>
-          </li>
+          {links.map((link) => {
+            return (
+              <li>
+                <a href={link.link}>{link.title}</a>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </header>
