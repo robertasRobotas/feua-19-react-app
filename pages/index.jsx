@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { CardsWrapper } from "@/components/CardsWrapper/CardsWrapper";
+import Spinner from "@/components/Spinner/Spinner";
 
 const MainPage = () => {
   const [logo, setLogo] = useState("FEUA19");
@@ -13,7 +14,7 @@ const MainPage = () => {
     { title: "Contacts", link: "/contacts" },
   ]);
 
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState(null);
 
   const fetchCharacters = async () => {
     const response = await axios.get(
@@ -27,8 +28,6 @@ const MainPage = () => {
     fetchCharacters();
   }, []);
 
-  console.log(characters);
-
   return (
     <>
       <button
@@ -39,7 +38,11 @@ const MainPage = () => {
         Change logo
       </button>
       <Header logo={logo} links={links} />
-      <CardsWrapper characters={characters} />
+      {!characters ? (
+        <Spinner />
+      ) : (
+        <CardsWrapper characters={characters} setCharacters={setCharacters} />
+      )}
       <Footer />
     </>
   );
